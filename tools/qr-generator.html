@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Free Online QR Code Generator - OmniTools</title>
+    <meta name="title" content="Free Online QR Code Generator - OmniTools">
+    <meta name="description" content="Generate custom, high-resolution QR codes for links, text, and WiFi instantly. 100% free and client-side with no expiration.">
+    <meta name="keywords" content="qr code generator, create qr code, custom qr code, free qr maker, wifi qr code">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- QRCode.js Library CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #16a34a;
+            --radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        /* Ad Banner */
+        .ad-banner {
+            background: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: var(--radius);
+            text-align: center;
+            padding: 16px;
+            margin: 20px auto;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            max-width: 728px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tool Workspace */
+        .workspace {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 35px;
+            margin: 10px 0 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tool-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tool-title h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .tool-title p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.95rem;
+            background: #f8fafc;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            background: #ffffff;
+        }
+
+        .color-pickers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .color-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="color"] {
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            background: none;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-success {
+            background: var(--success);
+            margin-top: 15px;
+        }
+
+        .btn-success:hover {
+            background: #15803d;
+        }
+
+        /* Preview Panel */
+        .preview-panel {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        #qrcode {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        #qrcode img {
+            margin: 0 auto;
+        }
+
+        /* Informational Card */
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+            padding: 20px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <a href="/" class="logo">⚡ Omni<span>Tools</span></a>
+            <a href="/" class="back-link">← All Tools</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Top Ad Space -->
+        <div class="ad-banner">
+            <span>Advertisement Banner Slot (728x90)</span>
+        </div>
+
+        <!-- Tool Workspace -->
+        <div class="workspace">
+            <div class="tool-title">
+                <h1>Custom QR Code Generator</h1>
+                <p>Generate permanent, high-quality QR codes for links, text, and Wi-Fi access.</p>
+            </div>
+
+            <div class="grid-layout">
+                <!-- Configuration Form -->
+                <div>
+                    <div class="input-group">
+                        <label for="qrText">URL or Content Text</label>
+                        <textarea id="qrText" rows="3" placeholder="https://example.com or any text content...">https://example.com</textarea>
+                    </div>
+
+                    <div class="color-pickers">
+                        <div class="color-box">
+                            <input type="color" id="qrColorDark" value="#000000">
+                            <div>
+                                <label style="margin:0;">QR Color</label>
+                                <span style="font-size:0.8rem; color:var(--text-muted);">Foreground</span>
+                            </div>
+                        </div>
+
+                        <div class="color-box">
+                            <input type="color" id="qrColorLight" value="#ffffff">
+                            <div>
+                                <label style="margin:0;">Background</label>
+                                <span style="font-size:0.8rem; color:var(--text-muted);">Canvas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="qrSize">Image Quality (Resolution)</label>
+                        <select id="qrSize">
+                            <option value="200">Standard (200x200 px)</option>
+                            <option value="300" selected>High (300x300 px)</option>
+                            <option value="500">Ultra Print (500x500 px)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn" onclick="generateQR()">⚡ Generate QR Code</button>
+                </div>
+
+                <!-- Live Preview & Download -->
+                <div class="preview-panel">
+                    <div id="qrcode"></div>
+                    <button class="btn btn-success" id="downloadBtn" onclick="downloadQRCode()">
+                        📥 Download PNG
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Article Box -->
+        <div class="info-card">
+            <h2>Why Use Our Free QR Code Generator?</h2>
+            <p>Our QR code maker is completely static and permanent. Unlike subscription-based QR services, codes generated here do not redirect through external tracking links and will never expire.</p>
+            <p><strong>Supported Use Cases:</strong></p>
+            <ul style="margin-left: 20px; color: var(--text-muted); line-height: 1.7;">
+                <li><strong>Website URLs & Portfolios:</strong> Direct visitors to landing pages or online stores.</li>
+                <li><strong>Wi-Fi Network Access:</strong> Format standard text credentials for quick phone scanning.</li>
+                <li><strong>Contact Cards & Social Profiles:</strong> Share links directly on business cards and resumes.</li>
+            </ul>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="ad-banner">
+            <span>Advertisement Banner Slot (728x90)</span>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OmniTools. 100% Client-Side QR Generator.</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        let qrcodeInstance = null;
+
+        function generateQR() {
+            const text = document.getElementById('qrText').value.trim();
+            const colorDark = document.getElementById('qrColorDark').value;
+            const colorLight = document.getElementById('qrColorLight').value;
+            const size = parseInt(document.getElementById('qrSize').value);
+            const qrContainer = document.getElementById('qrcode');
+
+            if (!text) {
+                alert('Please enter a URL or text to generate a QR code.');
+                return;
+            }
+
+            qrContainer.innerHTML = '';
+
+            qrcodeInstance = new QRCode(qrContainer, {
+                text: text,
+                width: size,
+                height: size,
+                colorDark: colorDark,
+                colorLight: colorLight,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        function downloadQRCode() {
+            const qrImg = document.querySelector('#qrcode img');
+            const qrCanvas = document.querySelector('#qrcode canvas');
+
+            let downloadUrl = '';
+            if (qrImg && qrImg.src) {
+                downloadUrl = qrImg.src;
+            } else if (qrCanvas) {
+                downloadUrl = qrCanvas.toDataURL('image/png');
+            } else {
+                alert('Please generate a QR code first.');
+                return;
+            }
+
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = 'qrcode-omnitools.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Initial generation on load
+        window.addEventListener('DOMContentLoaded', () => {
+            generateQR();
+        });
+    </script>
+</body>
+</html>
