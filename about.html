@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - OmniTools Free Online Utilities</title>
+    <meta name="description" content="Learn about OmniTools, our mission to provide free, fast, and privacy-focused online tools for everyone.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --primary: #2563eb;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius: 12px;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+        body { background-color:var(--bg-body); color:var(--text-main); line-height:1.6; display:flex; flex-direction:column; min-height:100vh; }
+        .container { max-width:900px; margin:0 auto; padding:0 20px; width:100%; }
+        header { background:var(--bg-card); border-bottom:1px solid var(--border-color); }
+        .navbar { display:flex; justify-content:space-between; align-items:center; height:70px; }
+        .logo { font-size:1.4rem; font-weight:700; color:var(--text-main); text-decoration:none; }
+        .logo span { color:var(--primary); }
+        .nav-links { display:flex; gap:20px; list-style:none; }
+        .nav-links a { text-decoration:none; color:var(--text-muted); font-weight:500; }
+        .content-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius); padding:40px; margin:40px 0; }
+        h1 { font-size:2rem; margin-bottom:16px; color:var(--text-main); }
+        h2 { font-size:1.3rem; margin:24px 0 12px; color:var(--text-main); }
+        p { margin-bottom:16px; color:var(--text-muted); }
+        ul { margin-left:20px; margin-bottom:16px; color:var(--text-muted); }
+        li { margin-bottom:8px; }
+        footer { background:var(--bg-card); border-top:1px solid var(--border-color); margin-top:auto; padding:20px 0; text-align:center; color:var(--text-muted); font-size:0.85rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="/" class="logo">⚡ Omni<span>Tools</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="content-card">
+            <h1>About OmniTools</h1>
+            <p>Welcome to <strong>OmniTools</strong>, your dedicated web platform for free, fast, and privacy-focused online productivity utilities.</p>
+            
+            <h2>Our Mission</h2>
+            <p>Our goal is simple: provide professional-grade tools for everyday tasks without forcing users to install bulky software, register accounts, or pay recurring subscriptions.</p>
+
+            <h2>Why Use OmniTools?</h2>
+            <ul>
+                <li><strong>100% Free Forever:</strong> Every single tool on our site is free with no hidden paywalls.</li>
+                <li><strong>Browser-Side Security:</strong> Most of our media and document converters process data directly inside your browser so your files never touch external servers.</li>
+                <li><strong>Optimized Performance:</strong> Lightweight code ensures lightning-fast loading speeds on mobile devices and desktop computers alike.</li>
+            </ul>
+
+            <h2>What We Offer</h2>
+            <p>We provide a growing suite of tools categorized into PDF and Document Management, Image and Media Optimization, and Developer Text Utilities.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 OmniTools. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
